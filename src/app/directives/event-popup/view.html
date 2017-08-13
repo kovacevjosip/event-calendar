@@ -1,0 +1,12 @@
+<div class="event-popup"
+    ng-class="{ active: selectedDate.length > 0 }">
+    <header class="event-popup-header">
+        <div class="event-popup-date">
+            <span ng-bind="selectedDate[0] | date: 'yyyy-MM-dd'"></span>
+        </div>
+        <div class="event-popup-close" ng-click="close()">X</div>
+    </header>
+    <div class="event-popup-body">
+        Body
+    </div>
+</div>

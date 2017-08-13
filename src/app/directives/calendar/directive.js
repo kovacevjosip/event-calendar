@@ -1,4 +1,6 @@
-app.directive('calendar', function () {
+app.directive('calendar', function (
+    EventPopupSvc
+) {
     return {
         restrict: 'E',
         templateUrl: 'app/directives/calendar/view.html',
@@ -29,17 +31,18 @@ app.directive('calendar', function () {
                 scope.months.forEach(function (month) {
                     var daysInMonth = month.date.daysInMonth();
 
-                    var day;
+                    var date;
                     for (var i = 1; i <= daysInMonth; i++) {
-                        day = moment([month.date.year(), month.date.month(), i]);
+                        date = moment([month.date.year(), month.date.month(), i]);
                         month.days.push({
-                            active: day.isSame(new Date(), 'day'),
-                            isCurrent: day.isSame(new Date(), 'day'),
-                            value: day.date(),
-                            weekValue: day.day(),
-                            name: day.format('dddd'),
-                            nameShort: day.format('ddd'),
-                            date: day
+                            active: date.isSame(new Date(), 'day'),
+                            isCurrent: date.isSame(new Date(), 'day'),
+                            isFuture: date.diff(new Date()) > 0 ? true : false,
+                            value: date.date(),
+                            weekValue: date.day(),
+                            name: date.format('dddd'),
+                            nameShort: date.format('ddd'),
+                            date: date
                         });
                     }
                 });
@@ -49,6 +52,12 @@ app.directive('calendar', function () {
                 scope.months.forEach(function (month, i) {
                     month.active = i === index ? true : false;
                 });
+            };
+
+            scope.selectDate = function (day) {
+                if (day.isCurrent || day.isFuture) {
+                    EventPopupSvc.saveDate(day.date);
+                }
             };
 
             init();

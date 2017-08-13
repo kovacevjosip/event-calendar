@@ -56,9 +56,15 @@
         line-height: 40px;
     }
 
-    .calendar-day.active span {
-        color: #313359;
-        background-color: #f9f62b;
+    .calendar-day span {
+        &.current {
+            color: #313359 !important;
+            background-color: #f9f62b !important;
+        }
+
+        &.past {
+            color: #acacac;
+        }
     }
 
     .calendar-day span {

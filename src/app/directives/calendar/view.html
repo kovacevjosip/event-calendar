@@ -19,9 +19,11 @@
                     <span>&nbsp;</span>
                 </li>
                 <li class="calendar-day"
-                    ng-class="{ active: day.active }"
-                    ng-repeat="day in month.days">
-                    <span ng-bind="::day.value"></span>
+                    ng-repeat="day in month.days"
+                    ng-click="selectDate(day)">
+                    <span ng-class="{ current: day.isCurrent, past: !day.isFuture }"
+                          ng-bind="::day.value">
+                    </span>
                 </li>
             </ul>
         </div>
