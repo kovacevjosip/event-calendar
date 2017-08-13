@@ -46,6 +46,7 @@ module.exports = function (grunt) {
         concat: {
             deps: {
                 src: [
+                    '<%= settings.dirs.npm %>/moment/moment.js',
                     '<%= settings.dirs.npm %>/angular/angular.js',
                     '<%= settings.dirs.npm %>/angular-ui-router/release/angular-ui-router.js'
                 ],

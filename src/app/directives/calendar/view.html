@@ -1,0 +1,29 @@
+<div class="calendar">
+    <ul class="calendar-header">
+        <li ng-class="{ active: month.active }"
+            ng-repeat="month in months"
+            ng-click="setActiveMonth($index)">
+            <span ng-bind="::month.name"></span>
+        </li>
+    </ul>
+    <div class="calendar-body">
+        <ul class="calendar-body-header">
+            <li ng-repeat="day in weekDays"
+                ng-bind="::day">
+            </li>
+        </ul>
+        <div class="calendar-body-content">
+            <ul ng-repeat="month in months | filter: { active: true }">
+                <li class="calendar-day"
+                    ng-repeat="day in [].constructor(month.days[0].weekValue) track by $index">
+                    <span>&nbsp;</span>
+                </li>
+                <li class="calendar-day"
+                    ng-class="{ active: day.active }"
+                    ng-repeat="day in month.days">
+                    <span ng-bind="::day.value"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
