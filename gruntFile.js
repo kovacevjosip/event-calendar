@@ -68,30 +68,8 @@ module.exports = function (grunt) {
         // JSHint task
         jshint: {
             options: {
-                browser: true,
-                jquery: true,
-                smarttabs: true,
-                eqeqeq: true,
-                immed: true,
-                latedef: false,
-                newcap: true,
-                undef: true,
                 globals: {
-                    module: false,
-                    require: false,
-                    console: false,
-                    exports: false,
-                    angular: false,
-                    IScroll: false,
-                    PxLoader: false,
-                    io: false,
-                    pako: false,
-                    moment: false,
-                    jwplayer: false,
-                    Raven: false,
-                    SEVEN: true,
-                    SETUP: true,
-                    _7Ticket: true
+                    app: true
                 },
                 ignores: [
                     '<%= settings.dirs.src %>/app/**/_*.js'
