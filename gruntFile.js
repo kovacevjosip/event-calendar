@@ -5,8 +5,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-sass');
 
     // Initialize configuration
@@ -21,6 +24,7 @@ module.exports = function (grunt) {
             },
             dirs: {
                 src: 'src',
+                dist: 'dist',
                 npm: 'node_modules'
             }
         },
@@ -28,6 +32,9 @@ module.exports = function (grunt) {
         clean: {
             dev: [
                 '<%= settings.dirs.src %>/css/**/*'
+            ],
+            dist: [
+                '<%= settings.dirs.dist %>/*'
             ]
         },
 
@@ -67,7 +74,38 @@ module.exports = function (grunt) {
             }
         },
 
-        // JSHint task
+        copy: {
+            app_dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= settings.dirs.src %>/',
+                    src: [
+                        'index.html',
+                        'app/**/*.html',
+                        '!app/**/*.js',
+                        'js/*'
+                    ],
+                    dest: '<%= settings.dirs.dist %>'
+                }]
+            }
+        },
+
+        htmlmin: {
+            dist: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    conservativeCollapse: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= settings.dirs.dist %>',
+                    src: '**/*.html',
+                    dest: '<%= settings.dirs.dist %>'
+                }]
+            }
+        },
+
         jshint: {
             options: {
                 globals: {
@@ -84,8 +122,23 @@ module.exports = function (grunt) {
             ]
         },
 
+        ngAnnotate: {
+            options: {
+                singleQuotes: true
+            },
+            dist: {
+                files: [
+                    {
+                        expand: true,
+                        src: [
+                            '<%= settings.dirs.dist %>/js/app.js'
+                        ]
+                    }
+                ]
+            }
+        },
+
         sass: {
-            // Development
             dev: {
                 options: {
                     outputStyle: 'compressed',
@@ -100,10 +153,35 @@ module.exports = function (grunt) {
                     dest: '<%= settings.dirs.src %>/css/',
                     ext: '.css'
                 }]
+            },
+            dist: {
+                options: {
+                    outputStyle: 'compressed',
+                    sourceMap: false,
+                    unixNewlines: true,
+                    noCache: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= settings.dirs.src %>/scss/',
+                    src: ['*.scss'],
+                    dest: '<%= settings.dirs.dist %>/css/',
+                    ext: '.css'
+                }]
             }
         },
 
-        // Watch task
+        uglify: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= settings.dirs.dist %>',
+                    src: '**/*.js',
+                    dest: '<%= settings.dirs.dist %>'
+                }]
+            }
+        },
+
         watch: {
             options: {
                 atBegin: true
@@ -141,5 +219,17 @@ module.exports = function (grunt) {
         'sass:dev',
         'connect',
         'watch'
+    ]);
+
+    grunt.registerTask('dist', [
+        'clean:dist',
+        'sass:dist',
+        'jshint',
+        'concat:deps',
+        'concat:app',
+        'copy:app_dist',
+        'ngAnnotate:dist',
+        'uglify:dist',
+        'htmlmin:dist'
     ]);
 };
