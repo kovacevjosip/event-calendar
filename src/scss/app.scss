@@ -1,5 +1,16 @@
 @charset "utf-8";
 
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #263463;
+}
+
 @import "./parts/normalize";
 @import "./parts/calendar";
 @import "./parts/event-popup";
+@import "./parts/events-list";

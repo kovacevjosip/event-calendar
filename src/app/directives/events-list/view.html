@@ -1,0 +1,23 @@
+<div class="events-list">
+    <ul>
+        <li class="events-list-item"
+            ng-repeat="event in events | orderBy: 'date'">
+            <span class="events-list-item-name"
+                  ng-bind="::event.name">
+            </span>
+            <span class="events-list-item-time">
+                <span ng-bind="::event.time"></span>
+                <span ng-bind="::event.date | date: 'yyyy-MM-dd'"></span>
+                <i ng-style="{ 'background-color': event.color }"></i>
+            </span>
+            <span class="events-list-item-remove"
+                  ng-click="remove(event)">
+                  x
+            </span>
+        </li>
+    </ul>
+    <div class="events-list-empty"
+         ng-if="events.length === 0">
+         There are no events.
+    </div>
+</div>

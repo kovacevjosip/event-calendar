@@ -1,4 +1,4 @@
-app.factory('EventPopupSvc', function () {
+app.factory('EventPopup', function () {
     var selectedDate = [];
 
     return {

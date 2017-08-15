@@ -48,7 +48,8 @@ module.exports = function (grunt) {
                 src: [
                     '<%= settings.dirs.npm %>/moment/moment.js',
                     '<%= settings.dirs.npm %>/angular/angular.js',
-                    '<%= settings.dirs.npm %>/angular-ui-router/release/angular-ui-router.js'
+                    '<%= settings.dirs.npm %>/angular-ui-router/release/angular-ui-router.js',
+                    '<%= settings.dirs.npm %>/angular-locker/dist/angular-locker.js'
                 ],
                 dest: '<%= settings.dirs.src %>/js/deps.js'
             },

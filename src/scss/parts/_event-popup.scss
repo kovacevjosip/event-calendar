@@ -9,6 +9,7 @@
     background: linear-gradient(0, #29366b,#2c5e91);
     transition: height 0.2s linear;
     overflow: hidden;
+    z-index: 1;
 
     &.active {
         height: 100%;
@@ -38,6 +39,45 @@
     }
 
     .event-popup-body {
+        padding: 20px;
         height: 100%;
+    }
+
+    .event-popup-form.ng-submitted input.ng-invalid {
+        border-color: #f00;
+    }
+
+    .event-popup-form label {
+        display: block;
+        float: left;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .event-popup-form label span {
+        display: block;
+        float: left;
+        width: 100%;
+    }
+
+    .event-popup-form input,
+    .event-popup-form select {
+        outline: 0;
+        margin: 5px 0;
+        padding: 5px;
+        width: 100%;
+        border-radius: 4px;
+        color: #5aa3d6;
+        background-color: #fff;
+        border: 1px solid #5aa3d6;
+        font-size: 0.875em;
+    }
+
+    .event-popup-form input:focus {
+        box-shadow: 0 0 5px #fff;
+    }
+
+    .event-popup-form select {
+        width: auto;
     }
 }

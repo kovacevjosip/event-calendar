@@ -1,5 +1,5 @@
 app.directive('calendar', function (
-    EventPopupSvc
+    EventPopup
 ) {
     return {
         restrict: 'E',
@@ -11,7 +11,6 @@ app.directive('calendar', function (
                 scope.months = [];
 
                 buildMonths();
-                console.log('months: ', scope.months);
             };
 
             var buildMonths = function () {
@@ -56,7 +55,7 @@ app.directive('calendar', function (
 
             scope.selectDate = function (day) {
                 if (day.isCurrent || day.isFuture) {
-                    EventPopupSvc.saveDate(day.date);
+                    EventPopup.saveDate(day.date);
                 }
             };
 

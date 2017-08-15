@@ -2,11 +2,31 @@
     ng-class="{ active: selectedDate.length > 0 }">
     <header class="event-popup-header">
         <div class="event-popup-date">
-            <span ng-bind="selectedDate[0] | date: 'yyyy-MM-dd'"></span>
+            <span ng-bind="selectedDate[0] | date: 'MMM. dd. yyyy'"></span>
         </div>
-        <div class="event-popup-close" ng-click="close()">X</div>
+        <div class="event-popup-close" ng-click="reset(form)">X</div>
     </header>
     <div class="event-popup-body">
-        Body
+        <form novalidate name="form" class="event-popup-form">
+            <label>
+                <span>Event name:</span>
+                <input type="text"
+                       placeholder="Event name ..."
+                       ng-model="event.name"
+                       name="eventName"
+                       required>
+            </label>
+            <div ng-show="form.$submitted || form.eventName.$touched">
+                <span ng-show="form.eventName.$error.required">Write event name.</span>
+            </div>
+            <label>
+                <span>Event time:</span>
+                <select ng-init="event.time = timeOptions[0]"
+                        ng-model="event.time"
+                        ng-options="option for option in timeOptions">
+                </select>
+            </label>
+            <input type="submit" value="Save" ng-click="save(form)">
+        </form>
     </div>
 </div>

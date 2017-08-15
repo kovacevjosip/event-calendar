@@ -1,14 +1,23 @@
 var app = angular.module('EventCalendar', [
+    'angular-locker',
     'ui.router'
 ]);
 
 app.config(function (
     $locationProvider,
     $stateProvider,
-    $urlRouterProvider
+    $urlRouterProvider,
+    lockerProvider
 ) {
     // Remove hash prefix
     $locationProvider.hashPrefix('');
+
+    // Configure locker
+    lockerProvider.defaults({
+        driver: 'local',
+        namespace: 'events',
+        separator: '.'
+    });
 
     // Default route
     $urlRouterProvider.otherwise('/');
