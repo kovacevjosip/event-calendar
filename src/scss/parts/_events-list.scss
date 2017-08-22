@@ -1,14 +1,14 @@
 .events-list {
-    color: #8d99c1;
-    background-color: #263463;
+    color: $elist-color;
+    background-color: $elist-color-back;
 
     .events-list-item {
         position: relative;
         float: left;
         width: 100%;
         padding: 20px;
-        border-bottom: 2px solid #222e5e;
-        border-top: 2px solid #333f6f;
+        border-top: 2px solid $elist-item-border-top-color;
+        border-bottom: 2px solid $elist-item-border-bottom-color;
     }
 
     .events-list-item-name {
@@ -33,7 +33,7 @@
         }
 
         span:first-child {
-            color: #fff;
+            color: $color;
         }
 
         span:nth-child(2) {
@@ -56,7 +56,7 @@
         top: 50%;
         transform: translateY(-50%);
         padding: 10px;
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: rgba($elist-item-remove-color-back, 0.1);
     }
 
     .events-list-empty {

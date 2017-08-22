@@ -1,7 +1,6 @@
 .calendar {
-    color: #fff;
     font-size: 14px;
-    background-color: #354787;
+    background-color: $calendar-color-back;
 
     .calendar-header {
         line-height: 50px;
@@ -22,8 +21,8 @@
     }
 
     .calendar-header li.active span {
-        color: #dbf74b;
-        background-color: #2e5d91;
+        color: $calendar-navigation-active-color;
+        background-color: $calendar-navigation-active-color-back;
     }
 
     .calendar-body {
@@ -31,8 +30,7 @@
         text-align: center;
         overflow: hidden;
         font-weight: bold;
-        background-color: #2c5e91;
-        background: linear-gradient(0, #29366b,#2c5e91);
+        background: linear-gradient(0, $calendar-body-color-back);
     }
 
     .calendar-body-header {
@@ -42,7 +40,7 @@
     .calendar-body-header li {
         display: inline-block;
         width: 14.285%;
-        color: #5aa3d6;
+        color: $calendar-body-header-color;
     }
 
     .calendar-body-content {
@@ -58,12 +56,12 @@
 
     .calendar-day span {
         &.current {
-            color: #313359 !important;
-            background-color: #f9f62b !important;
+            color: $calendar-day-active-color !important;
+            background-color: $calendar-day-active-color-back !important;
         }
 
         &.past {
-            color: #acacac;
+            color: $calendar-day-past-color;
         }
     }
 

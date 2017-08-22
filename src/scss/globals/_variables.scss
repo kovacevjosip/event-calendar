@@ -1,0 +1,27 @@
+$color: #fff !default;
+$color-back: #263463 !default;
+
+// Calendar
+$calendar-color-back: #354787 !default;
+$calendar-body-color-back: #29366b,#2c5e91 !default;
+$calendar-body-header-color: #5aa3d6 !default;
+$calendar-day-active-color: #313359 !default;
+$calendar-day-active-color-back: #f9f62b !default;
+$calendar-day-past-color: #acacac !default;
+$calendar-navigation-active-color: #dbf74b !default;
+$calendar-navigation-active-color-back: #2e5d91 !default;
+
+// Event popup
+$epopup-close-color-back: #000 !default;
+$epopup-color: $color !default;
+$epopup-color-back: $calendar-body-color-back !default;
+$epopup-date-color: #5aa3d6 !default;
+$epopup-header-color-back: $calendar-color-back !default;
+$epopup-input-invalid-color: #f00 !default;
+
+// Event list
+$elist-color: #8d99c1 !default;
+$elist-color-back: $color-back !default;
+$elist-item-border-top-color: #333f6f !default;
+$elist-item-border-bottom-color: #222e5e !default;
+$elist-item-remove-color-back: #000 !default;

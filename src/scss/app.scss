@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+@import "./globals/normalize";
+@import "./globals/variables";
+
 *,
 *:before,
 *:after {
@@ -7,14 +10,14 @@
 }
 
 body {
-    background-color: #263463;
+    color: $color;
+    background-color: $color-back;
 }
 
 .main-container {
     overflow: hidden;
 }
 
-@import "./parts/normalize";
 @import "./parts/calendar";
 @import "./parts/event-popup";
 @import "./parts/events-list";
