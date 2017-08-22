@@ -10,6 +10,10 @@ body {
     background-color: #263463;
 }
 
+.main-container {
+    overflow: hidden;
+}
+
 @import "./parts/normalize";
 @import "./parts/calendar";
 @import "./parts/event-popup";
