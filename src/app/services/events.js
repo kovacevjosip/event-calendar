@@ -15,7 +15,7 @@ app.factory('Events', function (
             var e;
             for (var i = 0; i < events.length; i++) {
                 e = events[i];
-                if (e.name === event.name && e.color === event.color && e.time === e.time) {
+                if (e.name === event.name && e.color === event.color && e.time === event.time) {
                     $log.debug('Remove event: ', event);
                     events.splice(i, 1);
                     break;
