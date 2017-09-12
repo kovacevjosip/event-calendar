@@ -2,3 +2,4 @@ node_modules/*
 src/css/*
 src/js/*
 dist/*
+api/node_modules/*
