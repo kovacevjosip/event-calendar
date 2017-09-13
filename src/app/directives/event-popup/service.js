@@ -4,7 +4,7 @@ app.factory('EventPopup', function () {
     return {
         selectedDate: selectedDate,
         saveDate: function (date) {
-            selectedDate.push(new Date(date));
+            selectedDate.push(date.format('YYYY-MM-DD'));
         },
         removeDate: function () {
             selectedDate.length = 0;
