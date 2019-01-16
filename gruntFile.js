@@ -1,16 +1,8 @@
 // Grunt module
 module.exports = function (grunt) {
     // Load NPM tasks
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-ng-annotate');
-    grunt.loadNpmTasks('grunt-sass');
+    require('load-grunt-tasks')(grunt);
+    var sass = require('node-sass');
 
     // Initialize configuration
     grunt.initConfig({
@@ -141,6 +133,7 @@ module.exports = function (grunt) {
         sass: {
             dev: {
                 options: {
+                    implementation: sass,
                     outputStyle: 'compressed',
                     sourceMap: true,
                     unixNewlines: true,
@@ -156,6 +149,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 options: {
+                    implementation: sass,
                     outputStyle: 'compressed',
                     sourceMap: false,
                     unixNewlines: true,
