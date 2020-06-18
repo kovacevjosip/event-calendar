@@ -8,7 +8,7 @@
     "build": "grunt dist"
   },
   "dependencies": {
-    "angular": "~1.7.0",
+    "angular": "~1.8.0",
     "angular-locker": "~2.0.0",
     "angular-ui-router": "~1.0.0",
     "moment": "~2.24.0"
